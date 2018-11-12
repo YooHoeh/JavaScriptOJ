@@ -11,7 +11,7 @@
 在 id 为 content 的 div 中只显示 Hello World 字样。（注意不要有多余空白字符）
 
 ```html
-<div id='content'>Hello World</div>
+<div id="content">Hello World</div>
 ```
 
 #1. **用 React.js 在页面上渲染标题**
@@ -25,9 +25,7 @@ renderContent("Hello World");
 页面上就有相应的内容：
 
 ```html
-<div id='root'>
-  <h1>Hello World</h1>
-</div>
+<div id="root"><h1>Hello World</h1></div>
 ```
 
 只能通过 React.js 来实现。
@@ -79,8 +77,8 @@ class Notification extends Component {
 ```
 
 #3 **JSX 元素变量**
-用 JSX 完成两个变量的定义：
 
+用 JSX 完成两个变量的定义：
 第一个变量 title 为一个具有类名为 title 的 \<h1\> 元素，其内容为 ScriptOJ；
 
 第二个变量 page 为一个具有类名为 content 的 \<div\> 元素，将之前定义的 title 变量插入其中作为它的内容。
@@ -161,43 +159,91 @@ class Dog extends Component {
   }
 }
 ```
- #6 **不能摸的狗（二）**
 
+#6 **不能摸的狗（二）**
 
-  有一只狗，不允许别人摸它，一旦摸它就会叫，然后就跑了；这只狗跑一段时间（20~50ms）以后就会停下来，也不叫了。
+有一只狗，不允许别人摸它，一旦摸它就会叫，然后就跑了；这只狗跑一段时间（20~50ms）以后就会停下来，也不叫了。
 
-  完成 Dog 组件，当用户点击的时候会执行自身的 bark 和 run 方法。给这个 Dog 组件加上状态 isRunning 和 isBarking，在进行相应的动作的时候设置为 true，停下来的时候设置为 false。
+完成 Dog 组件，当用户点击的时候会执行自身的 bark 和 run 方法。给这个 Dog 组件加上状态 isRunning 和 isBarking，在进行相应的动作的时候设置为 true，停下来的时候设置为 false。
+
 ```js
 class Dog extends Component {
-  constructor () {
-    super()
+  constructor() {
+    super();
     this.state = {
       isRunning: false,
       isBarking: false
-    }
+    };
   }
 
-  bark () {
-    this.setState({ isBarking: true })
-    setTimeout(() => this.setState({ isBarking: false }), 20)
-    this.run()
+  bark() {
+    this.setState({ isBarking: true });
+    setTimeout(() => this.setState({ isBarking: false }), 20);
+    this.run();
   }
 
-  run () {
-    this.setState({ isRunning:true })
-    setTimeout(() => this.setState({ isRunning: false }), 20)
+  run() {
+    this.setState({ isRunning: true });
+    setTimeout(() => this.setState({ isRunning: false }), 20);
   }
-  
 
   render() {
-    return (
-      <div onClick={this.bark.bind(this)}>DOG</div>
-    )
+    return <div onClick={this.bark.bind(this)}>DOG</div>;
   }
 }
 ```
 
+#8 **打印章节标题**
 
+现在需要在页面上显示一本书的章节，章节内容存放到一个数组里面：
+
+```js
+const lessons = [
+  { title: 'Lesson 1: title', description: 'Lesson 1: description' },
+  { title: 'Lesson 2: title', description: 'Lesson 2: description' },
+  { title: 'Lesson 3: title', description: 'Lesson 3: description' },
+  { title: 'Lesson 4: title', description: 'Lesson 4: description' }
+  ...
+]
+```
+
+现在需要你构建两个组件。一个组件为 Lesson 组件，渲染特定章节的内容。可以接受一个名为 lesson 的 props，并且把章节以下面的格式显示出来：
+
+```html
+<h1>Lesson 1: title</h1>
+<p>Lesson 1: description</p>
+```
+
+点击每个章节的时候，需要把章节在列表中的下标和它的标题打印（console.log）出来，例如第一个章节打印： 0 - Lesson 1: title，第二个章节打印：1 - Lesson 2: title。
+另外一个组件为 LessonsList，接受一个名为 lessons 的 props，它会使用 Lesson 组件把章节列表渲染出来。
+
+```js
+class Lesson extends Component {
+  handleClick(title, key) {}
+  render() {
+    const { lesson, index } = this.props;
+    return (
+      <div onClick={() => console.log(index + " - " + lesson.title)}>
+        <h1>{lesson.title}</h1>
+        <p>{lesson.description}</p>
+      </div>
+    );
+  }
+}
+
+class LessonsList extends Component {
+  renderList(lessonsList) {
+    return lessonsList.map((item, index) => (
+      <Lesson lesson={item} key={index} index={index} />
+    ));
+  }
+
+  render() {
+    const { lessons } = this.props;
+    return <div>{this.renderList(lessons)}</div>;
+  }
+}
+```
 
 #19. **获取文件的扩展名**
 
