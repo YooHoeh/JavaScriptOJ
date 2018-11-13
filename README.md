@@ -2,11 +2,11 @@
 
 [ScriptOJ](http://scriptoj.mangojuice.top/) Web 前端开发评测系统, 从大量实战代码、面试题目中总结出精华题库和相应的测试,这里记录了题库的答案,
 
-> 答案均为记录自己测试时通过的代码，一道题可能存在更优解，学艺不深请谅解。
+> 答案均为记录自己测试时通过的代码，每道题可能存在更优解，如有更好解决方案可以一起讨论。
 
 ---
 
-#0. **Hello World**
+**#0. Hello World**
 
 在 id 为 content 的 div 中只显示 Hello World 字样。（注意不要有多余空白字符）
 
@@ -14,9 +14,9 @@
 <div id="content">Hello World</div>
 ```
 
-#1. **用 React.js 在页面上渲染标题**
+**#1. 用 React.js 在页面上渲染标题**
 
-在页面上增加一个 id 为 root 的 <div> 元素。然后请你完成一个 renderContent 函数，这个函数会把传入的任意字符串都包装到一个 \<h1\> 元素中并且渲染到页面上。例如：
+在页面上增加一个 `id` 为 `root` 的 `<div>` 元素。然后请你完成一个 `renderContent` 函数，这个函数会把传入的任意字符串都包装到一个 `<h1>` 元素中并且渲染到页面上。例如：
 
 ```js
 renderContent("Hello World");
@@ -41,7 +41,7 @@ function renderContent(content) {
 }
 ```
 
-#2.**使用 React.js 构建一个未读消息组件 Notification。**
+**#2. 使用 React.js 构建一个未读消息组件 Notification。**
 
 通过 `getNotificationsCount()` 来获取未读消息的数量 ，如果有未读消息 N 条，而且 N > 0，那么 Notification 组件渲染显示：
 
@@ -76,19 +76,19 @@ class Notification extends Component {
 }
 ```
 
-#3 **JSX 元素变量**
+**#3. JSX 元素变量**
 
 用 JSX 完成两个变量的定义：
-第一个变量 title 为一个具有类名为 title 的 \<h1\> 元素，其内容为 ScriptOJ；
+第一个变量 `title` 为一个具有类名为 `title` 的 `<h1>` 元素，其内容为 ScriptOJ；
 
-第二个变量 page 为一个具有类名为 content 的 \<div\> 元素，将之前定义的 title 变量插入其中作为它的内容。
+第二个变量 `page` 为一个具有类名为 `content` 的 `<div>` 元素，将之前定义的 `title` 变量插入其中作为它的内容。
 
 ```js
 const title = <h1 className="title">ScriptOJ</h1>;
 const page = <div className="content">{title}</div>;
 ```
 
-#4 **用 React.js 组建的房子**
+**#4. 用 React.js 组建的房子**
 
 一个房子里面有一个房间和一个洗手间，房间里面有一个人和两条狗。
 请你完成组件：House，Room，Bathroom，Man，Dog，它们的最外层都用 div 标签包裹起来，类名分别为：house，room，bathroom，man，dog。组件的实现应该具有上述的嵌套关系。
@@ -138,7 +138,7 @@ class Dog extends Component {
 }
 ```
 
-#5 **不能摸的狗（一**
+**#5. 不能摸的狗（一**
 
 有一只狗，不允许别人摸它，一旦摸它就会叫，然后就跑了。
 完成 Dog 组件，当用户点击的时候会执行自身的 bark 和 run 方法。
@@ -160,7 +160,7 @@ class Dog extends Component {
 }
 ```
 
-#6 **不能摸的狗（二）**
+**#6. 不能摸的狗（二）**
 
 有一只狗，不允许别人摸它，一旦摸它就会叫，然后就跑了；这只狗跑一段时间（20~50ms）以后就会停下来，也不叫了。
 
@@ -193,7 +193,7 @@ class Dog extends Component {
 }
 ```
 
-#8 **打印章节标题**
+**#8. 打印章节标题**
 
 现在需要在页面上显示一本书的章节，章节内容存放到一个数组里面：
 
@@ -241,6 +241,53 @@ class LessonsList extends Component {
   render() {
     const { lessons } = this.props;
     return <div>{this.renderList(lessons)}</div>;
+  }
+}
+```
+
+**#9. 百分比换算器**
+
+做一个百分比换算器，需要你完成三个组件：`<Input />`：封装了原生的`<input />`，可以输入任意数字`<PercentageShower />`：实时 显示 `<Input />` 中的数字内容，但是需要把它转换成百分比，例如 `<Input />` 输入的是 0.1，那么就要显示 10.00%，保留两位小数。`<PercentageApp />`：组合上述两个组件。
+
+```js
+class Input extends Component {
+  render() {
+    const { value, handleChange } = this.props;
+    return (
+      <div>
+        <input type="number" value={value} onChange={handleChange} />
+      </div>
+    );
+  }
+}
+
+class PercentageShower extends Component {
+  render() {
+    const { value } = this.props;
+    return <div>{(value * 100).toFixed(2) + "%"}</div>;
+  }
+}
+
+class PercentageApp extends Component {
+  state = {
+    value: 2
+  };
+
+  handleChange(e) {
+    this.setState({
+      value: e.target.value
+    });
+  }
+  render() {
+    return (
+      <div>
+        <PercentageShower value={this.state.value} />
+        <Input
+          handleChange={this.handleChange.bind(this)}
+          value={this.state.value}
+        />
+      </div>
+    );
   }
 }
 ```
