@@ -303,3 +303,48 @@ const extname = filename => {
   return filename.slice(dot);
 };
 ```
+
+**#24 +1s 程序**
+
+完成一个生成计数器的函数 `plusFor`，调用它会返回一个计数器。计数器本身也是一个函数，每次调用会返回一个字符串。达到以下的效果：
+
+```js
+const counter1 = plusFor('小明')
+counter1() // => 为小明+1s
+counter1() // => 为小明+2s
+counter1() // => 为小明+3s
+...
+
+const counter2 = plusFor('李梅')
+counter2() // => 为李梅+1s
+counter2() // => 为李梅+2s
+counter2() // => 为李梅+3s
+...
+```
+
+注意你只需要完成 `plusFor` 函数，不要使用额外的全局变量。
+
+```js
+const plusFor = name => {
+  let count = 0;
+  return () => {
+    count++;
+    return `为${name}+${count}s`;
+  };
+};
+```
+
+**#54 你是五年的程序员吗？**
+
+每天都是快乐的一天，比如看到一个帖子 说了这么一个故事：
+
+    面试一个5年的前端，却连原型链也搞不清楚，满口都是Vue，React之类的实现，这样的人该用吗？
+    最后还是拒绝。还有其他的原因。一个问题，输入m.n参数，获取一个m长度的都是n的数组，不能用循环，他不会写。问他他们公司项目的webpack配置entry有几个，他一会说1个，一会说很多个，不知道他到底懂不懂。
+
+那么，为证明你的实力，请写出一个函数 initArray ，接受两个参数 m 和 n，返回一个数组，它的长度是 m，每个值都是 n。
+
+```js
+const initArray = (m, n) => {
+  return new Array(m).fill(n);
+};
+```
