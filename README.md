@@ -14,6 +14,8 @@
 <div id="content">Hello World</div>
 ```
 
+---
+
 **#1. 用 React.js 在页面上渲染标题**
 
 在页面上增加一个 `id` 为 `root` 的 `<div>` 元素。然后请你完成一个 `renderContent` 函数，这个函数会把传入的任意字符串都包装到一个 `<h1>` 元素中并且渲染到页面上。例如：
@@ -40,6 +42,8 @@ function renderContent(content) {
   ReactDOM.render(<h1>{content}</h1>, document.getElementById("root"));
 }
 ```
+
+---
 
 **#2. 使用 React.js 构建一个未读消息组件 Notification。**
 
@@ -76,6 +80,8 @@ class Notification extends Component {
 }
 ```
 
+---
+
 **#3. JSX 元素变量**
 
 用 JSX 完成两个变量的定义：
@@ -87,6 +93,8 @@ class Notification extends Component {
 const title = <h1 className="title">ScriptOJ</h1>;
 const page = <div className="content">{title}</div>;
 ```
+
+---
 
 **#4. 用 React.js 组建的房子**
 
@@ -138,6 +146,8 @@ class Dog extends Component {
 }
 ```
 
+---
+
 **#5. 不能摸的狗（一**
 
 有一只狗，不允许别人摸它，一旦摸它就会叫，然后就跑了。
@@ -159,6 +169,8 @@ class Dog extends Component {
   }
 }
 ```
+
+---
 
 **#6. 不能摸的狗（二）**
 
@@ -192,6 +204,8 @@ class Dog extends Component {
   }
 }
 ```
+
+---
 
 **#8. 打印章节标题**
 
@@ -245,6 +259,8 @@ class LessonsList extends Component {
 }
 ```
 
+---
+
 **#9. 百分比换算器**
 
 做一个百分比换算器，需要你完成三个组件：`<Input />`：封装了原生的`<input />`，可以输入任意数字`<PercentageShower />`：实时 显示 `<Input />` 中的数字内容，但是需要把它转换成百分比，例如 `<Input />` 输入的是 0.1，那么就要显示 10.00%，保留两位小数。`<PercentageApp />`：组合上述两个组件。
@@ -292,6 +308,8 @@ class PercentageApp extends Component {
 }
 ```
 
+---
+
 #19. **获取文件的扩展名**
 
 完成 extname 函数，它会接受一个文件名作为参数，你需要返回它的扩展名。例如，输入 emoji.png，返回 .png。
@@ -303,6 +321,8 @@ const extname = filename => {
   return filename.slice(dot);
 };
 ```
+
+---
 
 **#24 +1s 程序**
 
@@ -334,17 +354,62 @@ const plusFor = name => {
 };
 ```
 
+---
+
 **#54 你是五年的程序员吗？**
 
-每天都是快乐的一天，比如看到一个帖子 说了这么一个故事：
-
-    面试一个5年的前端，却连原型链也搞不清楚，满口都是Vue，React之类的实现，这样的人该用吗？
-    最后还是拒绝。还有其他的原因。一个问题，输入m.n参数，获取一个m长度的都是n的数组，不能用循环，他不会写。问他他们公司项目的webpack配置entry有几个，他一会说1个，一会说很多个，不知道他到底懂不懂。
-
-那么，为证明你的实力，请写出一个函数 initArray ，接受两个参数 m 和 n，返回一个数组，它的长度是 m，每个值都是 n。
+请写出一个函数 initArray ，接受两个参数 m 和 n，返回一个数组，它的长度是 m，每个值都是 n,不能用循环.
 
 ```js
 const initArray = (m, n) => {
   return new Array(m).fill(n);
+};
+```
+
+---
+
+**#98 判断两个矩形是否重叠**
+用一个对象的数据来表示一个矩形的位置和大小：
+
+```js
+{
+x: 100,
+y: 100,
+width: 150,
+height: 250
+}
+```
+
+它表示一个宽为 150 高为 250 的矩形在页面上的 (100, 100) 的位置。
+
+请你完成一个函数 isOverlap 可以接受两个矩形作为参数，判断这两个矩形在页面上是否重叠。例如：
+
+```js
+const rect1 = { x: 100, y: 100, width: 100, height: 100 };
+const rect2 = { x: 150, y: 150, width: 100, height: 100 };
+isOverlap(rect1, rect2); // => true
+```
+
+```js
+const isOverlap = (rect1, rect2) => {
+  let left, right, top, bottom;
+  if (rect1.x < rect2.x) {
+    left = rect1;
+    right = rect2;
+  } else {
+    left = rect2;
+    right = rect1;
+  }
+  if (left.x + left.width < right.x) return false;
+
+  if (rect1.y > rect2.y) {
+    top = rect1;
+    bottom = rect2;
+  } else {
+    top = rect2;
+    bottom = rect1;
+  }
+  if (top.y > bottom.y + bottom.height) return false;
+  return true;
 };
 ```
