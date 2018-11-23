@@ -310,7 +310,7 @@ class PercentageApp extends Component {
 
 ---
 
-#19. **获取文件的扩展名**
+**#19 获取文件的扩展名**
 
 完成 extname 函数，它会接受一个文件名作为参数，你需要返回它的扩展名。例如，输入 emoji.png，返回 .png。
 
@@ -411,5 +411,41 @@ const isOverlap = (rect1, rect2) => {
   }
   if (top.y > bottom.y + bottom.height) return false;
   return true;
+};
+```
+
+**#102 记忆化斐波那契函数（Memoization）**
+
+斐波那契数列指的是类似于以下的数列：
+
+1, 1, 2, 3, 5, 8, 13, ....
+
+也就是，第 n 个数由数列的前两个相加而来：f(n) = f(n - 1) + f(n -2)
+
+请你完成 fibonacci 函数，接受 n 作为参数，可以获取数列中第 n 个数，例如：
+
+```js
+fibonacci(1); // => 1
+fibonacci(2); // => 1
+fibonacci(3); // => 2
+```
+
+测试程序会从按顺序依次获取斐波那契数列中的数，请注意程序不要超时，也不要添加额外的全局变量。
+
+```js
+const fibonacci = n => {
+  // 这里添加一个方法内变量cache来保存前1000000个值
+  if (!fibonacci.cache) {
+    fibonacci.cache = [];
+    for (let i = 1; i <= 1000000; i++) {
+      if (i === 1 || i === 2) {
+        fibonacci.cache[i] = 1;
+      } else if (i > 2) {
+        fibonacci.cache[i] = fibonacci.cache[i - 1] + fibonacci.cache[i - 2];
+      }
+    }
+  }
+
+  return fibonacci.cache[n];
 };
 ```
