@@ -310,6 +310,27 @@ class PercentageApp extends Component {
 
 ---
 
+**#11 获取文本的高度**
+
+完成 `Post` 组件，接受一个字符串的 `content` 作为 `props`，`Post` 会把它显示到自己的 `<p>` 元素内。
+
+并且，点击 `<p>` 元素的时候，会使用 `console.log` 把元素的高度打印出来。
+
+```js
+class Post extends Component {
+  showEleHeight(e) {
+    console.log(e.target.clientHeight);
+  }
+  render() {
+    const { content } = this.props;
+
+    return <p onClick={this.showEleHeight.bind(this)}>{content}</p>;
+  }
+}
+```
+
+---
+
 **#19 获取文件的扩展名**
 
 完成 extname 函数，它会接受一个文件名作为参数，你需要返回它的扩展名。例如，输入 emoji.png，返回 .png。
@@ -320,6 +341,71 @@ const extname = filename => {
   if (dot === -1 || dot === 0) return "";
   return filename.slice(dot);
 };
+```
+
+---
+
+#23 肥猫列表
+
+现在有很多只猫，都很肥：
+
+```js
+const cats = [
+  { name: 'Tom', weight: 300 },
+  { name: 'Lucy', weight: 400 },
+  { name: 'Lily', weight: 700 },
+  { name: 'Jerry', weight: 600 },
+  ...
+]
+```
+
+现在你需要把它们按照由胖到瘦的顺序把它们渲染到 id 为 cats-list 的 div 元素当中：
+
+```html
+<div id="cat-list">
+  <div class="cat">
+    <span class="cat-name">Lily</span> <span class="cat-weight">700</span>
+  </div>
+  <div class="cat">
+    <span class="cat-name">Jerry</span> <span class="cat-weight">600</span>
+  </div>
+  <div class="cat">
+    <span class="cat-name">Lucy</span> <span class="cat-weight">400</span>
+  </div>
+  <div class="cat">
+    <span class="cat-name">Tom</span> <span class="cat-weight">300</span>
+  </div>
+  ...
+</div>
+```
+
+完成 `renderFatCats` 函数，接受一个 `cats` 数组作为参数，然后它会往 div#cats-list 元素内渲染类似以上的结果。注意类名需要保持一致；另外`renderFatCats` 可能会被多次调用，注意清空上一次渲染的数据。
+
+你可以使用 `jQuery`、`React.js` 等方式来完成。
+
+（你不需要调用 `renderFatCats`）。
+
+```html
+<div id="cats-list"></div>
+```
+
+```js
+function renderFatCats(cats) {
+  const list = document.getElementById("cats-list");
+  list.innerHTML = "";
+  cats.sort((a, b) => {
+    return a.weight > b.weight ? -1 : 1;
+  });
+
+  let renders = "";
+  cats.forEach(item => {
+    renders += `<div class="cat">
+                                  <span class="cat-name">${item.name}</span>
+                                  <span class="cat-weight">${item.weight}</span>
+                                </div>`;
+  });
+  list.innerHTML = renders.trim();
+}
 ```
 
 ---
@@ -413,6 +499,8 @@ const isOverlap = (rect1, rect2) => {
   return true;
 };
 ```
+
+---
 
 **#102 记忆化斐波那契函数（Memoization）**
 
