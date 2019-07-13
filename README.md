@@ -600,6 +600,31 @@ const injectSections = (items, sections) => {
 }
 ```
 
+这里分享几个网上找的神仙算法：
+
+```js
+const injectSections = (items, sections) => {
+    sections.forEach(
+        (v,i)=>{
+            items[v.index]=[v.content,items[v.index]]
+        }
+    );
+    return [].concat.apply([],items);
+}
+const injectSections = (items, sections) =>
+    [].concat.apply(
+        [],
+        sections.reduce(
+            (o,s)=>(o[s.index]=[s.content,o[s.index]]) && o,
+            items
+        )
+    );
+const injectSections = (items, sections) => 
+    sections
+    .sort((a,b)=>b.index-a.index)
+    .reduce((it,se)=>[].concat(it.splice(0,se.index),se.content,it),items)
+```
+
 ---
 
 ## 96. spacify
