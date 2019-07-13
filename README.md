@@ -17,6 +17,7 @@
   - [30. curry 函数](#30-curry-函数)
   - [54. 你是五年的程序员吗](#54-你是五年的程序员吗)
   - [98. 判断两个矩形是否重叠](#98-判断两个矩形是否重叠)
+  - [97. 类名操作](#97-类名操作)
   - [99. safeGet](#99-safeGet)
   - [102. 记忆化斐波那契函数（Memoization）](#102-记忆化斐波那契函数Memoization)
 
@@ -584,7 +585,20 @@ const isOverlap = (rect1, rect2) => {
 ```
 
 ---
+## 97. 类名操作
 
+完成几个 DOM 元素类名操作的工具方法：
+
+```js
+addClass(dom, name)：给 dom 元素添加类名 name
+removeClass(dom, name)：把 dom 元素的类名 name 删除
+hasClass(dom, name)：判断 dom 元素是否有类名 name
+```
+```JS
+const addClass = (dom, name) => dom.classList.add(name);
+const removeClass = (dom, name) => dom.classList.remove(name);
+const hasClass = (dom, name) => dom.classList.contains(name);
+```
 ## 99. safeGet
 
 有时候我们需要访问一个对象较深的层次，但是如果这个对象某个属性不存在的话就会报错，例如：
