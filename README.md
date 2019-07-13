@@ -16,6 +16,7 @@
   - [24. +1s 程序](#24-1s-程序)
   - [30. curry 函数](#30-curry-函数)
   - [54. 你是五年的程序员吗](#54-你是五年的程序员吗)
+  - [96. spacify](#96-spacify)
   - [98. 判断两个矩形是否重叠](#98-判断两个矩形是否重叠)
   - [97. 类名操作](#97-类名操作)
   - [99. safeGet](#99-safeGet)
@@ -537,6 +538,21 @@ const initArray = (m, n) => {
 
 ---
 
+## 96. spacify
+
+请你给字符串都添加上原型方法 spacify，可以让一个字符串的每个字母都多出一个空格的间隔：
+
+```js
+"ScriptOJ".spacify() // => "S c r i p t O J"
+```
+```js
+String.prototype.spacify = funcxtion() { 
+  return this.split('').join(' ');
+}
+```
+
+---
+
 ## 98. 判断两个矩形是否重叠
 
 用一个对象的数据来表示一个矩形的位置和大小：
@@ -584,6 +600,7 @@ const isOverlap = (rect1, rect2) => {
 };
 ```
 
+
 ---
 ## 97. 类名操作
 
@@ -599,6 +616,8 @@ const addClass = (dom, name) => dom.classList.add(name);
 const removeClass = (dom, name) => dom.classList.remove(name);
 const hasClass = (dom, name) => dom.classList.contains(name);
 ```
+---
+
 ## 99. safeGet
 
 有时候我们需要访问一个对象较深的层次，但是如果这个对象某个属性不存在的话就会报错，例如：
