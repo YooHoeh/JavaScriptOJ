@@ -16,9 +16,10 @@
   - [24. +1s 程序](#24-1s-程序)
   - [30. curry 函数](#30-curry-函数)
   - [54. 你是五年的程序员吗](#54-你是五年的程序员吗)
+  - [94. 按下标插入](#94-按下标插入)
   - [96. spacify](#96-spacify)
-  - [98. 判断两个矩形是否重叠](#98-判断两个矩形是否重叠)
   - [97. 类名操作](#97-类名操作)
+  - [98. 判断两个矩形是否重叠](#98-判断两个矩形是否重叠)
   - [99. safeGet](#99-safeGet)
   - [102. 记忆化斐波那契函数（Memoization）](#102-记忆化斐波那契函数Memoization)
 
@@ -538,6 +539,69 @@ const initArray = (m, n) => {
 
 ---
 
+## 94. 按下标插入
+
+现在有一个数组存放字符串数据：
+
+```js
+['item1', 'item2', 'item3', 'item4', 'item5']
+```
+
+有另外一个数组存放一组对象：
+
+```js
+[
+  { content: 'section1', index: 0 },
+  { content: 'section2', index: 2 }
+]
+```
+
+它每个对象表示的是会往原来的数组的 `index`坐标插入 `content` 数据（`index` 不会重复）：
+```js
+       0      1      2      3      4
+     item1  itme2  item3  item4  item5
+    ^             ^ 
+    |             |
+ section1     section2  
+```
+
+最后结果是：`['section1', 'item1', 'item2', 'section2', 'item3', 'item4', 'item5']`
+请你完成 `injectSections` 函数，可以达到上述的功能：
+
+```js
+injectSections(
+  ['item1', 'item2', 'item3', 'item4', 'item5'],
+  [
+    { content: 'section1', index: 0 },
+    { content: 'section2', index: 2 }
+  ]
+) // => ['section1', 'item1', 'item2', 'section2', 'item3', 'item4', 'item5']
+```
+
+```js
+const injectSections = (items, sections) => {
+  let rest = sections;
+  let result = items;
+  
+  while(rest.length){
+    let section = rest.pop(); 
+    rest = rest.map(i => {
+      if( i.index > section.index ) {
+        return {  
+                content:i.content,
+                index:i.index + 1
+              }
+      } 
+      return i
+    }) 
+    result.splice(section.index,0,section.content)
+  }
+  return result;
+}
+```
+
+---
+
 ## 96. spacify
 
 请你给字符串都添加上原型方法 spacify，可以让一个字符串的每个字母都多出一个空格的间隔：
@@ -551,6 +615,22 @@ String.prototype.spacify = funcxtion() {
 }
 ```
 
+---
+
+## 97. 类名操作
+
+完成几个 DOM 元素类名操作的工具方法：
+
+```js
+addClass(dom, name)：给 dom 元素添加类名 name
+removeClass(dom, name)：把 dom 元素的类名 name 删除
+hasClass(dom, name)：判断 dom 元素是否有类名 name
+```
+```JS
+const addClass = (dom, name) => dom.classList.add(name);
+const removeClass = (dom, name) => dom.classList.remove(name);
+const hasClass = (dom, name) => dom.classList.contains(name);
+```
 ---
 
 ## 98. 判断两个矩形是否重叠
@@ -601,21 +681,6 @@ const isOverlap = (rect1, rect2) => {
 ```
 
 
----
-## 97. 类名操作
-
-完成几个 DOM 元素类名操作的工具方法：
-
-```js
-addClass(dom, name)：给 dom 元素添加类名 name
-removeClass(dom, name)：把 dom 元素的类名 name 删除
-hasClass(dom, name)：判断 dom 元素是否有类名 name
-```
-```JS
-const addClass = (dom, name) => dom.classList.add(name);
-const removeClass = (dom, name) => dom.classList.remove(name);
-const hasClass = (dom, name) => dom.classList.contains(name);
-```
 ---
 
 ## 99. safeGet
