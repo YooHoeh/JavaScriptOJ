@@ -1,23 +1,24 @@
 <!-- TOC -->
 
-- [JavascriptOJ](#javascriptoj)
-  - [0. Hello World](#0-hello-world)
-  - [1. 用 React.js 在页面上渲染标题](#1-用-reactjs-在页面上渲染标题)
-  - [2. 使用 React.js 构建一个未读消息组件 Notification。](#2-使用-reactjs-构建一个未读消息组件-notification)
-  - [3. JSX 元素变量](#3-jsx-元素变量)
-  - [4. 用 React.js 组建的房子](#4-用-reactjs-组建的房子)
+- [JavascriptOJ](#JavascriptOJ)
+  - [0. Hello World](#0-Hello-World)
+  - [1. 用 React.js 在页面上渲染标题](#1-用-Reactjs-在页面上渲染标题)
+  - [2. 使用 React.js 构建一个未读消息组件 Notification](#2-使用-Reactjs-构建一个未读消息组件-Notification)
+  - [3. JSX 元素变量](#3-JSX-元素变量)
+  - [4. 用 React.js 组建的房子](#4-用-Reactjs-组建的房子)
   - [5. 不能摸的狗（一）](#5-不能摸的狗一)
   - [6. 不能摸的狗（二）](#6-不能摸的狗二)
   - [8. 打印章节标题](#8-打印章节标题)
-  - [9. 百分比换算器]****(#9-百分比换算器)
-  - [11 获取文本的高度](#11-获取文本的高度)
-  - [19 获取文件的扩展名](#19-获取文件的扩展名)
-  - [23 肥猫列表](#23-肥猫列表)
-  - [24 +1s 程序](#24-1s-程序)
-  - [30 curry 函数](#30-curry-函数)
-  - [54 你是五年的程序员吗？](#54-你是五年的程序员吗)
-  - [98 判断两个矩形是否重叠](#98-判断两个矩形是否重叠)
-  - [102 记忆化斐波那契函数（Memoization）](#102-记忆化斐波那契函数memoization)
+  - [9. 百分比换算器](#9-百分比换算器)
+  - [11. 获取文本的高度](#11-获取文本的高度)
+  - [19. 获取文件的扩展名](#19-获取文件的扩展名)
+  - [23. 肥猫列表](#23-肥猫列表)
+  - [24. +1s 程序](#24-1s-程序)
+  - [30. curry 函数](#30-curry-函数)
+  - [54. 你是五年的程序员吗](#54-你是五年的程序员吗)
+  - [98. 判断两个矩形是否重叠](#98-判断两个矩形是否重叠)
+  - [99. safeGet](#99-safeGet)
+  - [102. 记忆化斐波那契函数（Memoization）](#102-记忆化斐波那契函数Memoization)
 
 <!-- /TOC -->
 
@@ -68,7 +69,7 @@ function renderContent(content) {
 
 ---
 
-## 2. 使用 React.js 构建一个未读消息组件 Notification。
+## 2. 使用 React.js 构建一个未读消息组件 Notification
 
 通过 `getNotificationsCount()` 来获取未读消息的数量 ，如果有未读消息 N 条，而且 N > 0，那么 Notification 组件渲染显示：
 
@@ -333,7 +334,7 @@ class PercentageApp extends Component {
 
 ---
 
-## 11 获取文本的高度
+## 11. 获取文本的高度
 
 完成 `Post` 组件，接受一个字符串的 `content` 作为 `props`，`Post` 会把它显示到自己的 `<p>` 元素内。
 
@@ -354,7 +355,7 @@ class Post extends Component {
 
 ---
 
-## 19 获取文件的扩展名
+## 19. 获取文件的扩展名
 
 完成 extname 函数，它会接受一个文件名作为参数，你需要返回它的扩展名。例如，输入 emoji.png，返回 .png。
 
@@ -368,7 +369,7 @@ const extname = filename => {
 
 ---
 
-## 23 肥猫列表
+## 23. 肥猫列表
 
 现在有很多只猫，都很肥：
 
@@ -433,7 +434,7 @@ function renderFatCats(cats) {
 
 ---
 
-## 24 +1s 程序
+## 24. +1s 程序
 
 完成一个生成计数器的函数 `plusFor`，调用它会返回一个计数器。计数器本身也是一个函数，每次调用会返回一个字符串。达到以下的效果：
 
@@ -465,7 +466,7 @@ const plusFor = name => {
 
 ---
 
-## 30 curry 函数
+## 30. curry 函数
 
 函数式编程当中有一个非常重要的概念就是 函数柯里化。一个接受 任意多个参数 的函数，如果执行的时候传入的参数不足，那么它会返回新的函数，新的函数会接受剩余的参数，直到所有参数都传入才执行操作。这种技术就叫柯里化。请你完成 curry 函数，它可以把任意的函数进行柯里化，效果如下：
 
@@ -523,7 +524,7 @@ const curry = (f, arr = []) => {
 
 ---
 
-## 54 你是五年的程序员吗？
+## 54. 你是五年的程序员吗
 
 请写出一个函数 initArray ，接受两个参数 m 和 n，返回一个数组，它的长度是 m，每个值都是 n,不能用循环.
 
@@ -535,7 +536,7 @@ const initArray = (m, n) => {
 
 ---
 
-## 98 判断两个矩形是否重叠
+## 98. 判断两个矩形是否重叠
 
 用一个对象的数据来表示一个矩形的位置和大小：
 
@@ -584,16 +585,19 @@ const isOverlap = (rect1, rect2) => {
 
 ---
 
-## 99 safeGet
+## 99. safeGet
 
 有时候我们需要访问一个对象较深的层次，但是如果这个对象某个属性不存在的话就会报错，例如：
+
 ```js
 var data = { a: { b: { c: 'ScriptOJ' } } }
 data.a.b.c // => scriptoj
 data.a.b.c.d // => 报错，代码停止执行
 console.log('ScriptOJ') // => 不会被执行
 ```
+
 请你完成一个 safeGet 函数，可以安全的获取无限多层次的数据，一旦数据不存在不会报错，会返回 undefined，例如：
+
 ```js
 var data = { a: { b: { c: 'ScriptOJ' } } }
 safeGet(data, 'a.b.c') // => scriptoj
@@ -608,7 +612,6 @@ const safeGet = (data, path) => {
 
  const pathArr = path.split('.');
  let result = data;
- 
  for(let i = 0; i < pathArr.length; i++) {
    if(result[pathArr[i]] == undefined) return undefined;
    result = result[pathArr[i]];
@@ -617,9 +620,10 @@ const safeGet = (data, path) => {
 }
 
 ```
+
 ---
 
-## 102 记忆化斐波那契函数（Memoization）
+## 102. 记忆化斐波那契函数（Memoization）
 
 斐波那契数列指的是类似于以下的数列：
 
