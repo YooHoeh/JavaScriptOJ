@@ -16,6 +16,7 @@
   - [24. +1s 程序](#24-1s-程序)
   - [30. curry 函数](#30-curry-函数)
   - [54. 你是五年的程序员吗](#54-你是五年的程序员吗)
+  - [91. 数组拍平（二）](#91-数组拍平二)
   - [94. 按下标插入](#94-按下标插入)
   - [96. spacify](#96-spacify)
   - [97. 类名操作](#97-类名操作)
@@ -539,6 +540,29 @@ const initArray = (m, n) => {
 
 ---
 
+## 91. 数组拍平（二）
+
+编写一个 JavaScript generator 函数，接受一个仅包含数字的 多维数组 ，返回一个迭代器，可以遍历得到它拍平以后的结果。例如：
+
+```JS
+const numbers = flatten2([1, [[2], 3, 4], 5])
+numbers.next().value // => 1
+numbers.next().value // => 2
+numbers.next().value // => 3
+numbers.next().value // => 4
+numbers.next().value // => 5
+```
+
+```js
+function *flatten2 (arr) {
+  const flatArr = arr.flat(Infinity);
+  while(flatArr){
+    yield flatArr.shift();
+  }
+}
+```
+
+---
 ## 94. 按下标插入
 
 现在有一个数组存放字符串数据：
